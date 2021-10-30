@@ -16,6 +16,9 @@
 
         <style>
             body{
+                position: absolute;
+                height: 100%;
+                width: 100%;
                 background-color: rgb(50,56,65);
                 color: white;
                 font-family: monospace;
@@ -36,9 +39,44 @@
                 font-size: 14;
                 margin-bottom: 0
             }
+            @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+            * {
+              margin: 0;
+              padding: 0;
+              -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+            }
+
+            .navMenu {
+              position: absolute;
+              top: 6%;
+              left: 50%;
+              -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+            }
+
+            .navMenu a {
+              padding: 10px;
+              color: #f6f4e6;
+              text-decoration: none;
+              font-size: 1.2em;
+              text-transform: uppercase;
+              font-weight: 500;
+              display: inline-block;
+              -webkit-transition: all 0.2s ease-in-out;
+              transition: all 0.2s ease-in-out;
+            }
+            .navMenu a:hover {
+              font-style: bolder;
+              color: rgb(175, 255, 218);
+              background-color:rgb(52, 60, 78);
+            }
+
+
         </style>
   </head>
   <body>
+    <!--
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="https://atalay.xyz/">
           <img src="media/icons/favicon.png" width="30" height="30" alt="">
@@ -53,8 +91,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Projeler
-                </a>
+                  Projeler </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="projeler/geometri_oyun.html">Geometri Oyun</a>
                   <a class="dropdown-item" href="https://github.com/atalayerdogan/Sortalay">Sortalay</a>
@@ -68,15 +105,16 @@
           </ul>
         </div>
       </nav>
+    -->
 
-    <h1 style="text-align: center; font-family:'Times New Roman';">atalay.xyz'ye hg</h1>
 
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
+    <nav class="navMenu">
+      <a href="https://atalay.xyz">Giriş</a>
+      <a href="#">Ana Sayfa</a>
+      <a href="#">Blog</a>
+      <a href="#">Hakkında</a>
 
+    </nav>
 
 
     <footer>
@@ -103,6 +141,7 @@
       })
       </script>
       -->
+
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.topology.min.js"></script>
       <script>
