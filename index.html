@@ -3,8 +3,10 @@
         <style>
             body{
                 top: 0;
+                right: 0;
+                left: 0;
                 position: absolute;
-                background: #171717;
+                background: #121212;
                 color: white;
                 height: 100%;
                 width: 100%;
@@ -15,12 +17,26 @@
                 font-size: 136;
                 font-family: "Times New Roman";
             }
+            .sub-title{
+                text-align: center;
+                font-size: 26;
+                font-family:Verdana;
+            }
+            footer{
+                position:absolute;
+                bottom: 0;
+                right:0;
+                width: 100%;
+                text-align: center;
+                color: white;
+                font-family:serif;
+            }
             .continue-button{
                 background: red;
             }
             .wrapper{
             position: fixed;
-            top: 90%;
+            top: 75%;
             left: 50%;
             transform: translate(-50%, -50%);
             }
@@ -70,7 +86,7 @@
          <link rel = "icon" href = "media/icons/favicon.png" type = "image/x-icon">            
     </head>
     <body>
-        <h1 class="main-title">atalay.xyz</a>
+        <h1 class="main-title">atalay.xyz</h1>
 
         <br>
 
@@ -78,6 +94,9 @@
             <a href="ana-sayfa.html"><span>Devam</span></a>
           </div>
 
+          <footer>
+            <p class="copyright">©2021 - Atalay Erdoğan</p>
+          </footer>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
