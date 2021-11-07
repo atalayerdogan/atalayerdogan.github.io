@@ -1,9 +1,13 @@
 {
-  "name": "death_gl",
+  "homepage":"https://atalayerdogan.github.io/atalayerdogan.github.io",
+  "name": "multiplayer-test",
   "version": "0.0.1",
   "description": "",
   "main": "src/index.js",
+
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "concurrently \"nodemon server.js\" \"watchify src/index.js -o public/js/bundle.js -v\"",
     "build": "browserify src/index.js | uglifyjs -mc warnings=false > public/js/bundle.min.js",
     "test": "npm run build"
