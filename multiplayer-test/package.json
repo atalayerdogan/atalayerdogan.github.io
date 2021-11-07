@@ -1,10 +1,9 @@
 {
-  "homepage":"https://atalayerdogan.github.io/atalayerdogan.github.io",
+  "homepage": "https://atalayerdogan.github.io/atalayerdogan.github.io",
   "name": "multiplayer-test",
   "version": "0.0.1",
   "description": "",
   "main": "src/index.js",
-
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
