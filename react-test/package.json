@@ -1,12 +1,12 @@
 {
-  "hompage": "https://atalayerdogan.github.io/atalayerdogan.github.io/react-test",
+  "hompage": "https://atalayerdogan.github.io/atalayerdogan.github.io",
   "name": "deploy",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "webpack-dev-server",
     "build": "webpack --mode=production"
   },
