@@ -32,9 +32,11 @@
       let pointer, raycaster, isShiftDown = false, isQDown;
       let rollOverMesh, rollOverMaterial;
       let grid, plane;
-      let cubeGeo, cubeMaterial;
+      let cubeGeo, tetraGeo, coneGeo, cylinderGeo;
+      let voxelMaterial;
       let controls;
       let placed_shapes;
+      let geo_list,geo_dict,geo_ind_dict, geo_list_ind, geo_list_dict;
 
 
       const objects = [];
@@ -63,10 +65,28 @@
         camera.position.set( 500, 800, 1300);
         camera.lookAt(0,0,0)
 				scene.add(camera);
-
+        
+        //geos
         // cubes
         cubeGeo = new THREE.BoxGeometry(50, 50, 50);
-        cubeMaterial = new THREE.MeshLambertMaterial({color: 0xffa200});
+        
+        //tetrahedron
+        tetraGeo = new THREE.TetrahedronGeometry(10)
+
+        //cone
+        coneGeo = new THREE.ConeGeometry(25,50,50)
+
+        //cone
+        cylinderGeo = new THREE.CylinderGeometry(25,25,50,32)
+        //list for geos
+        geo_list = [cubeGeo, tetraGeo, coneGeo, cylinderGeo];
+        geo_dict = {cube:cubeGeo, tetra:tetraGeo, cone:coneGeo, cylinder:cylinderGeo};
+        geo_ind_dict = {value:0}
+        //console.log(geo_list_dict.value)
+        //console.log(geo_list[geo_list_ind])
+
+        //materials (only one for one)
+        voxelMaterial = new THREE.MeshLambertMaterial({color: 0xffa200});
 
         // grid
 				grid = new THREE.GridHelper(1000, 20, 0xe8fcff, 0xf0f0f0);
@@ -87,8 +107,9 @@
         // rollOverMaterial
         const rollOverGeo = new THREE.BoxGeometry( 50, 50, 50);
         rollOverMaterial = new THREE.MeshBasicMaterial( { color: 0x14ffad, opacity: 0.5, transparent: true } );
-        rollOverMesh = new THREE.Mesh( rollOverGeo, rollOverMaterial );
-        scene.add(rollOverMesh);
+        //rollOverMesh = new THREE.Mesh( rollOverGeo, rollOverMaterial );
+        rollOverMesh = new THREE.Mesh( geo_list[geo_ind_dict.value], rollOverMaterial );
+        //scene.add(rollOverMesh);
 
         // renderer
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -130,22 +151,23 @@
       function onPointerMove( event ) {
         if (isQDown)
         {
+          //rollOverMesh = new THREE.Mesh( geo_list[geo_ind_dict.value], rollOverMaterial );
           controls.enableRotate = true;
           scene.remove(rollOverMesh)
           render()
         }
         else {
         // TODO roll over mesh on key press or on ui
-        scene.add(rollOverMesh)
-        if (false == false) { //outstanding move
+        //rollOverMesh = new THREE.Mesh( geo_list[geo_ind_dict.value], rollOverMaterial );
+        //scene.add(rollOverMesh);
           pointer.set(( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1 );
           raycaster.setFromCamera( pointer, camera );
           const intersects = raycaster.intersectObjects( objects, false );
+          console.log("cekti");
           if ( intersects.length > 0 ) {
             const intersect = intersects[ 0 ];
             rollOverMesh.position.copy( intersect.point ).add( intersect.face.normal );
             rollOverMesh.position.divideScalar(50).floor().multiplyScalar(50).addScalar(25);
-            }
           render();  
          }
         }
@@ -167,7 +189,9 @@
 
         // create cube
         } else {
-            const voxel = new THREE.Mesh( cubeGeo, cubeMaterial );
+            //TODO (DELETE LATER!!!)
+            //const voxel = new THREE.Mesh( cubeGeo, cubeMaterial );
+            const voxel = new THREE.Mesh( geo_list[geo_ind_dict.value], voxelMaterial );
             voxel.position.copy( intersect.point ).add( intersect.face.normal );
             voxel.position.divideScalar(50).floor().multiplyScalar(50).addScalar(25);
             if (! isQDown && ! isShiftDown) {
@@ -232,13 +256,18 @@
         //gui.addColor(rollOverMaterial, 'color').onChange(setValue);
         //cubeFolder.add(cube.rotation, 'x', 0, Math.PI * 2)
         //cubeFolder.open()
-        
+
         const shapeFolder = gui.addFolder("Şekil")
+        //shapeFolder.add(params, "inseamarea", 31.8).name("Inseam Inch ").listen();
+        //shapeFolder.add(geo_ind_dict, "value").name("Materyal");
+        shapeFolder.add(geo_ind_dict, 'value', { Kup: 0, Tetrahedral: 1, Koni: 2,Silindir: 3 } );
+        //console.log(go_list_ind.)
+        
 
         //materials
         const materialFolder = gui.addFolder("Materyaller")
         materialFolder.addColor(new ColorGUIHelper(rollOverMaterial,"color"),"value").name("Highlight Rengi")
-        materialFolder.addColor(new ColorGUIHelper(cubeMaterial,"color"),"value").name("Şekil Rengi")
+        materialFolder.addColor(new ColorGUIHelper(voxelMaterial,"color"),"value").name("Şekil Rengi")
 
         /*
         const a= new THREE.Mesh( cubeGeo, cubeMaterial );
