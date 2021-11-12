@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+	<head>
+		<title>Geometri Oyunu</title>
+
+    <title>atalay.xyz • Geometri Oyun</title>
+    <link rel = "icon" href = "../media/icons/favicon.png" type = "image/x-icon">
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body{
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          background: #121212;
+          color: white;
+
+        }
+        h1{
+          text-align:center;
+          color:rgb(216, 156, 156);
+        }
+        h2{
+          text-align:center;
+          color:white;
+        }
+        .welcome-div{
+          text-align:center;
+          color: white;
+          margin-top: 10%;
+
+        }
+        .level-button{
+          position: relative;
+          background-color: whitesmoke;
+          color:rgb(17, 17, 17);
+          height: 75px;
+          width: 75px;
+          margin-right:50px;
+          margin-top:50px;
+          border-radius: 8px;
+          border: none;
+          font: bold;
+          font-size: 300%;
+          font-family: times;
+          text-decoration: none;
+
+        }
+        .level-button:hover{
+          background-color: lightblue;
+          color:rgb(17, 17, 17);
+        }
+    </style>
+	</head>
+	<body>
+    <h1>Geometri Oyununa Hoş Geldiniz</h1> 
+    <h2>Lütfen başlamak için bölüm seçin</h2> 
+    <br>
+
+    <div class="welcome-div">
+      <input class="level-button" type="button" onclick="location.href='geometri-oyun-seviye1.html';" value="1" />
+      <input class="level-button" type="button" onclick="location.href='#';" value="2" />
+      <input class="level-button" type="button" onclick="location.href='#';" value="3" />
+    </div> 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.topology.min.js"></script>
+    <script>
+    VANTA.TOPOLOGY({
+      el: "body",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x75aa5f,
+      backgroundColor: 0x434d4b
+    })
+    </script>
+    
+
+	</body>
+</html>
